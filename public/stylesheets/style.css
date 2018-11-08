@@ -531,7 +531,7 @@ button .right:after {
   margin-top: 20px;
 }
 
-#toVideo {
+/*#toVideo {
   padding: 10px 30px;
   display: block;
   font-family: 'Merienda', cursive;
@@ -545,7 +545,7 @@ button .right:after {
 
 #toVideo:hover {
   cursor: pointer;
-}
+}*/
 
 .vid-wrapper {
   margin: 15px auto;

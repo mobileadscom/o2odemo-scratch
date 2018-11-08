@@ -187,7 +187,7 @@ var app = {
         spinner.style.display = 'none';
         // if (response.data.status == true) {
         	this.formSections.toPage('doneSec');
-        	var emailContent = '<head><meta charset="utf-8"></head>Thank you for registering. Please click the link below to complete your registration and join the questionnaire<br><br><a href="https://demo.o2oplatform.com/survey/?userId=' + email + '" target="_blank">https://demo.o2oplatform.com/survey/?userId=' + email + '</a>';
+        	var emailContent = '<head><meta charset="utf-8"></head>Thank you for registering. Please click the link below to complete your registration and join the questionnaire<br><br><a href="https://demo.o2oplatform.com/scratch/?userId=' + email + '" target="_blank">https://demo.o2oplatform.com/scratch/?userId=' + email + '</a>';
         	user.sendEmail(email, 'MobileAds Survey Link', emailContent);
         	// user.trackRegister();
      //    }
@@ -341,7 +341,7 @@ var app = {
 			height: 236,
 			completeFunction: function() {
 				this.reveal();
-				document.getElementById('toApply').disabled = false;
+				document.getElementById('toVideo').disabled = false;
 			}
 		})
 	},

@@ -298,7 +298,7 @@ var user = {
 		return new Promise(function(resolve, reject) {
 			resolve({
 				data: {
-					couponLink: "https://demo.o2oplatform.com/survey/coupon.html",
+					couponLink: "https://demo.o2oplatform.com/scratch/coupon.html",
 					message: "marked.",
 					status:true
 				}
