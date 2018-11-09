@@ -17,7 +17,7 @@ var app = {
 	pages: null, // array of pages
 	params: {}, // params in query string
 	player: null, //youtube player
-	sratchResult: null,
+	scratchResult: null,
 	getParams: function() {
 		  var query_string = {};
 		  var query = window.location.search.substring(1);
@@ -69,7 +69,7 @@ var app = {
 	},
 	processResult() {
 		if (!user.isWanderer) {
-			if (this.sratchResult == 'win') {
+			if (this.scratchResult == 'win') {
   			user.win(user.info.id, 'A', user.source).then((response) => {
 					console.log(response);
 					if (response.data.couponLink) {
@@ -103,7 +103,7 @@ var app = {
   		}
 		}
 		else {
-			this.initResult(this.sratchResult);
+			this.initResult(this.scratchResult);
 		}	
 	},
 	continue: function() {
@@ -133,7 +133,6 @@ var app = {
 			// 	}
 			// }
 			// else {
-				// this.pages.toPage('termsPage');
 				this.pages.toPage('page1');
 			// }
 		}
@@ -298,7 +297,6 @@ var app = {
 	    			console.log(err);
 	    			// this.pages.toPage('page1')
 	    			this.pages.toPage('regPage');
-	    			// this.pages.toPage('termsPage');
 	    		});
 	    	}
 	    	else {
@@ -321,14 +319,14 @@ var app = {
     }).catch((error) => {
     	user.isWanderer = true;
 			console.log(error);
-			this.pages.toPage('termsPage');
+			this.pages.toPage('regPage');
 			// this.pages.toPage('page1')
     });
 	},
 	initEraser: function() {
 		var result = winningLogic.process(true);
-		this.sratchResult = result.actualResult;
-		if (this.sratchResult == 'win') {
+		this.scratchResult = result.actualResult;
+		if (this.scratchResult == 'win') {
 			document.getElementById('scratchLose').style.display = 'none'
 		}
 		else {
@@ -341,7 +339,11 @@ var app = {
 			height: 236,
 			completeFunction: function() {
 				this.reveal();
-				document.getElementById('toVideo').disabled = false;
+				if (!app.processed) {
+	            	app.processed = true;
+	            	app.processResult();
+				}
+				document.getElementById('toResult').disabled = false;
 			}
 		})
 	},
@@ -376,7 +378,6 @@ var app = {
 	    setTimeout(() => {
 		    this.pages.toPage('regPage');
 		    // this.pages.toPage('page1')
-		    // this.pages.toPage('termsPage');
 		  }, 1000);
 	  }
 	  else {
@@ -400,11 +401,26 @@ var app = {
         events: {
           'onStateChange': (event) => {
             if (event.data == YT.PlayerState.ENDED) {
-            	if (!processed) {
+            	/*if (!processed) {
 	            	processed = true;
 	            	this.processResult();
 								this.pages.toPage('resultPage');
-							}
+							}*/
+				this.pages.toPage('page2');
+            }
+            else if (event.data == YT.PlayerState.PLAYING) {
+            	var playtimer = setInterval(() => {
+	        		if (this.player.getPlayerState() != 1) {
+	        			console.log('videoEnded!');
+	        			clearInterval(playtimer);
+	        		}
+	        		else {
+	        			var percentage = (this.player.getCurrentTime() / this.player.getDuration() * 100).toFixed(0)
+		            	document.getElementById('vidProgress').style.width = percentage + '%'
+	        		}
+	        	}, 500);
+            	
+				
             }
           }
         }

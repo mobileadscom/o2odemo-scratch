@@ -288,20 +288,55 @@ Please check your email and click on the link to complete your registration.
 			<div class="msg-wrapper" style="text-align: left;margin-bottom: 25px;">
 				STEP 1
 				<div style="font-family: 'Roboto', sans-serif;font-weight: 500;">
-					Scratch the coupon to reveal result.
+					Watch the video.
 				</div>
 				<br>
 				STEP 2
 				<div style="font-family: 'Roboto', sans-serif;font-weight: 500;">
-					Watch the video to get your coupon code.
+					Scratch the coupon to reveal result.
 				</div>
 			</div>
 		  	<div class="pagination-wrapper">
-		      <button id="toQ2" class="pageBtn next-btn saveQuestion" data-question="1" data-target="page2">NEXT <span class="right"></span></button>
+		      <!-- <button id="toQ2" class="pageBtn next-btn saveQuestion" data-question="1" data-target="page2">NEXT <span class="right"></span></button> -->
+		      <button id="toVideo" class="pageBtn next-btn" data-target="videoPage">NEXT <span class="right"></span></button>
 		  	</div>
 		  </div>
-		  <div id="page2" class="page">
+		  
+		  <!-- <div id="applyPage" class="page">
 		  	<div class="msg-wrapper">
+			    <div style="border-top: 1px solid #A0A0A0;
+				    border-bottom: 1px solid #A0A0A0;
+				    max-width: 400px;
+				    margin: 10px auto;
+				    padding: 10px;
+				    font-size: 32px;"
+				>
+					Thank You
+				</div>
+			  </div>
+			  <button id="toVideo" class="pageBtn shadow-2" data-target="videoPage">Submit your response</button>
+			  <div class="pagination-wrapper">
+					<button id="toP1" class="pageBtn back-btn" data-target="page1">BACK <span class="left"></span></button>
+			  </div>
+		  </div> -->
+		  <div id="videoPage" class="page">
+			 <!--  <div class="msg-wrapper">
+					Your result will be displayed after watching the video below.
+			  </div> -->
+			  <div class="vid-wrapper" id="vid">
+		    </div>
+		    <div style="padding: 0px 20px;margin-top: -13px;">
+		    	<div class="progress-wrapper">
+			    	<div id="vidProgress"></div>
+			    </div>
+		    </div>
+		   
+	<!-- 	    <div class="pagination-wrapper">
+				  <button id="toResult" class="pageBtn next-btn saveQuestion" data-target="resultPage">NEXT <span class="right"></span></button>
+			  </div> -->
+		  </div>
+		  <div id="page2" class="page">
+		  	<div class="msg-wrapper" style="margin-top: 0px;">
 			    <div style="border-top: 1px solid #A0A0A0;
 				    border-bottom: 1px solid #A0A0A0;
 				    max-width: 400px;
@@ -321,37 +356,13 @@ Please check your email and click on the link to complete your registration.
 		  		<img src="images/win.png" id="scratchWin" class="eraser-bg">
 		  	</div>
 		  	<div class="pagination-wrapper">
-		  	  <button id="toQ1" class="pageBtn back-btn" data-target="page1">BACK <span class="left"></span></button>
-		  	  <button id="toVideo" disabled class="pageBtn next-btn" data-target="videoPage">NEXT <span class="right"></span></button>
+		  	  <!-- <button id="toQ1" class="pageBtn back-btn" data-target="page1">BACK <span class="left"></span></button> -->
+		  	  <!-- <button id="toVideo" disabled class="pageBtn next-btn" data-target="videoPage">NEXT <span class="right"></span></button> -->
 		      <!-- <button id="toApply" disabled class="pageBtn next-btn saveQuestion" data-question="1" data-target="applyPage">NEXT <span class="right"></span></button> -->
+		      <div class="pagination-wrapper">
+				  <button id="toResult" disabled class="pageBtn next-btn saveQuestion" data-target="resultPage">NEXT <span class="right"></span></button>
+			  </div>
 		  	</div>
-		  </div>
-		  <!-- <div id="applyPage" class="page">
-		  	<div class="msg-wrapper">
-			    <div style="border-top: 1px solid #A0A0A0;
-				    border-bottom: 1px solid #A0A0A0;
-				    max-width: 400px;
-				    margin: 10px auto;
-				    padding: 10px;
-				    font-size: 32px;"
-				>
-					Thank You
-				</div>
-			  </div>
-			  <button id="toVideo" class="pageBtn shadow-2" data-target="videoPage">Submit your response</button>
-			  <div class="pagination-wrapper">
-					<button id="toP1" class="pageBtn back-btn" data-target="page1">BACK <span class="left"></span></button>
-			  </div>
-		  </div> -->
-		  <div id="videoPage" class="page">
-			  <div class="msg-wrapper">
-					Your result will be displayed after watching the video below.
-			  </div>
-			  <div class="vid-wrapper" id="vid">
-		    </div>
-	<!-- 	    <div class="pagination-wrapper">
-				  <button id="toResult" class="pageBtn next-btn saveQuestion" data-target="resultPage">NEXT <span class="right"></span></button>
-			  </div> -->
 		  </div>
 		  <div id="resultPage" class="page">
 			  <div id="resultTitle">
