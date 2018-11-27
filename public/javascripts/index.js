@@ -343,6 +343,7 @@ var app = {
 	            	app.processed = true;
 	            	app.processResult();
 				}
+				document.getElementById('eraser').style.pointerEvents = 'none';
 				document.getElementById('toResult').disabled = false;
 			}
 		})

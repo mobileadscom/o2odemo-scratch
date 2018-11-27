@@ -110,3 +110,13 @@
 .miniSelect-items::-webkit-scrollbar-thumb:hover {
   background: #555; 
 }
+
+@media screen and (orientation:landscape) and ( max-width: 995px){
+  .miniSelect {
+    margin-bottom: 100px;
+  }
+
+  .miniSelect-items {
+    max-height: 150px;
+  }
+}
