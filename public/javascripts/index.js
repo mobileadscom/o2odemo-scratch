@@ -186,8 +186,8 @@ var app = {
         spinner.style.display = 'none';
         // if (response.data.status == true) {
         	this.formSections.toPage('doneSec');
-        	var emailContent = '<head><meta charset="utf-8"></head>Thank you for registering. Please click the link below to complete your registration and join the questionnaire<br><br><a href="https://demo.o2oplatform.com/scratch/?userId=' + email + '" target="_blank">https://demo.o2oplatform.com/scratch/?userId=' + email + '</a>';
-        	user.sendEmail(email, 'MobileAds Survey Link', emailContent);
+        	var emailContent = '<head><meta charset="utf-8"></head>Thank you for registering. Please click the link below to complete your registration and join the campaign.<br><br><a href="https://demo.o2oplatform.com/scratch/?userId=' + email + '" target="_blank">https://demo.o2oplatform.com/scratch/?userId=' + email + '</a>';
+        	user.sendEmail(email, 'MobileAds O2O Demo Link', emailContent);
         	// user.trackRegister();
      //    }
      //    else if (response.data.message == 'user exist.') {

@@ -15,12 +15,12 @@ var db = firebase.firestore();
 const settings = {timestampsInSnapshots: true};
 db.settings(settings);
 
-var campaignId = '';
-var adUserId = '';
-var rmaId = '';
-var generalUrl = 'https://track.richmediaads.com/a/analytic.htm?rmaId={{rmaId}}&domainId=0&pageLoadId={{cb}}&userId={{adUserId}}&pubUserId=0&campaignId={{campaignId}}&callback=trackSuccess&type={{type}}&value={{value}}&uniqueId={{userId}}';
+var campaignId = '6868b7ed9e244cc5408bddbec242ae49';
+var adUserId = '3354';
+var rmaId = '231';
+var generalUrl = 'https://track.richmediaads.com/a/analytic.htm?rmaId={{rmaId}}&domainId=0&pageLoadId={{cb}}&userId={{adUserId}}&pubUserId=0&campaignId={{campaignId}}&callback=trackSuccess&type={{type}}&value={{value}}&uniqueId={{userId}}&customId={{source}}';
 
-var trackingUrl = generalUrl.replace('{{rmaId}}', rmaId).replace('{{campaignId}}', campaignId).replace('{{adUserId}}', adUserId).replace('{{cb}}', Date.now().toString());
+var trackingUrl = generalUrl.replace('{{rmaId}}', rmaId).replace('{{campaignId}}', campaignId).replace('{{adUserId}}', adUserId).replace('{{cb}}', window.pgId || Date.now().toString());
 
 var user = {
 	isWanderer: false,
@@ -355,6 +355,12 @@ var user = {
 			var type = 'win';
 			var url = trackingUrl.replace('{{type}}', type).replace('{{value}}', '').replace('{{userId}}', userId);
 			url += '&tt=E&ty=E';
+			if (userId.indexOf('@') > -1) {
+				url += '&userType=email';
+			}
+			else {
+				url += '&userType=twitter';
+			}
 			return axios.get(url);
 		}
 	},
@@ -363,6 +369,12 @@ var user = {
 			var type = 'lose';
 			var url = trackingUrl.replace('{{type}}', type).replace('{{value}}', '').replace('{{userId}}', userId);
 			url += '&tt=E&ty=E';
+			if (userId.indexOf('@') > -1) {
+				url += '&userType=email';
+			}
+			else {
+				url += '&userType=twitter';
+			}
 			return axios.get(url);
 		}
 	},
@@ -480,7 +492,30 @@ var user = {
 			psForm.append('coupon_url', encodeURIComponent(couponLink));
 		}
 		return axios.post(domain + '/api/coupon/softbank/api_call', psForm, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
-	}
+	},
+	trackPageView: function(type, source) {
+		var url = trackingUrl.replace('{{type}}', type).replace('{{value}}', '').replace('{{source}}', source).replace('{{userId}}', '');
+		if (window.location.hostname.indexOf('localhost') < 0) {
+			return axios.get(url);
+		}
+		else {
+			console.log(url)
+		}
+	},
+	trackRegister: function(userId, source, method) {
+	    if (window.location.hostname.indexOf('localhost') < 0) {
+	    	var type = 'register';
+	    	if (method == 'twitter') {
+	    		type = 'register_tw';
+	    	}
+	    	else if (method == 'email') {
+	    		type = 'register_email';
+	    	}
+			var url = trackingUrl.replace('{{type}}', type).replace('{{value}}', '').replace('{{userId}}', userId).replace('{{source}}', source);
+			// console.log(url);
+			return axios.get(url);
+	    }
+	},
 };
 
 export default user;
