@@ -87,7 +87,7 @@
   margin-top: 20px;
 }
 
-#regEmail, #regTwitter, #followBtn {
+#regEmail, #regTwitter, #followBtn, #regLine {
   padding: 8px 15px;
   width: 250px;
   display: block;
@@ -99,11 +99,11 @@
   font-size: 19px;
 }
 
-#regEmail:hover, #regTwitter:hover {
+#regEmail:hover, #regTwitter:hover, #regLine:hover {
   cursor: pointer;
 }
 
-#regEmail img, #regTwitter img, #followBtn img {
+#regEmail img, #regTwitter img, #followBtn img, #regLine img {
   width: 24px;
   vertical-align: middle;
   margin-right: 15px;
@@ -115,4 +115,8 @@
 
 #regTwitter, #followBtn {
   background-color: #31AFD5;
+}
+
+#regLine {
+  background-color: #00B900;
 }

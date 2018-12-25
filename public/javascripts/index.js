@@ -354,6 +354,9 @@ var app = {
 
 		/* init pagination */
 		this.params = this.getParams();
+		if (this.params.displayName) {
+			this.params.signInMethod = 'line';
+		}
 		this.params.source = 'source1'; // dummy source
 		this.pages = new miniPages({
 	  	pageWrapperClass: document.getElementById('page-wrapper'),
@@ -382,8 +385,13 @@ var app = {
 		  }, 1000);
 	  }
 	  else {
-			this.initUser(this.params.userId, false);
-		}
+	  	if (this.params.signInMethod == 'line') {
+			this.initUser(this.params.userId, true);
+	  	}
+	  	else {
+	  		this.initUser(this.params.userId, false);
+	  	}
+	}
 	  
 	  var processed = false; // check if result has been processed to avoid double result processsing
 
